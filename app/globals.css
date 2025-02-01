@@ -2,21 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer base {
   :root {
+    --primary: 25 49 82;    /* #193152 */
+    --secondary: 206 164 52; /* #cea434 */
+    --white: 255 255 255;   /* #FFFFFF */
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
     --secondary-foreground: 0 0% 9%;
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
@@ -34,6 +31,31 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
+  /* Base Typography */
+  body {
+    @apply font-body bg-white text-primary leading-relaxed text-base;
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-primary leading-tight tracking-normal;
+  }
+
+  /* Paragraph */
+  p {
+    @apply leading-relaxed mb-4 text-[16px] md:text-[18px] text-primary/90;
+  }
+
+  /* Links */
+  a {
+    @apply text-primary hover:text-primary-light transition-colors;
+  }
+
+  .subtitle {
+    @apply font-subheading;
+  }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -68,5 +90,94 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Button Styles */
+  .btn-primary {
+    @apply bg-primary text-white px-6 py-3 rounded-md
+           hover:bg-primary-light transition-colors duration-200
+           font-subheading text-[15px] tracking-wide
+           shadow-sm hover:shadow-md;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-white px-6 py-3 rounded-md
+           hover:bg-secondary-light transition-colors duration-200
+           font-subheading text-[15px] tracking-wide
+           shadow-sm hover:shadow-md;
+  }
+
+  /* Heading Styles */
+  .heading-xl {
+    @apply font-heading text-4xl md:text-5xl lg:text-6xl 
+           font-bold tracking-tight leading-tight
+           text-primary mb-4;
+  }
+
+  .heading-lg {
+    @apply font-heading text-3xl md:text-4xl lg:text-5xl 
+           font-bold tracking-tight leading-tight
+           text-primary mb-3;
+  }
+
+  .heading-md {
+    @apply font-heading text-2xl md:text-3xl lg:text-4xl 
+           font-bold tracking-tight leading-tight
+           text-primary mb-3;
+  }
+
+  /* Subheading Styles */
+  .subheading {
+    @apply font-subheading text-lg md:text-xl 
+           text-primary/80 leading-relaxed tracking-normal
+           mb-6;
+  }
+
+  /* Body Text Styles */
+  .body-lg {
+    @apply text-[18px] md:text-[20px] leading-relaxed 
+           text-primary/90 font-body;
+  }
+
+  .body-base {
+    @apply text-[16px] md:text-[18px] leading-relaxed 
+           text-primary/90 font-body;
+  }
+
+  .body-sm {
+    @apply text-[14px] md:text-[16px] leading-relaxed 
+           text-primary/90 font-body;
+  }
+
+  /* Card Text */
+  .card-title {
+    @apply font-subheading text-xl text-primary 
+           tracking-normal leading-snug mb-2;
+  }
+
+  .card-text {
+    @apply font-body text-[15px] text-primary/80 
+           leading-relaxed;
+  }
+
+  /* List Text */
+  .list-item {
+    @apply font-body text-[16px] text-primary/90 
+           leading-relaxed mb-2;
+  }
+
+  /* Navigation Text */
+  .nav-link {
+    @apply font-subheading text-[15px] text-primary 
+           hover:text-primary-light transition-colors
+           tracking-wide;
+  }
+
+  /* Form Labels */
+  .form-label {
+    @apply font-subheading text-[14px] text-primary/90 
+           tracking-wide mb-1;
   }
 }

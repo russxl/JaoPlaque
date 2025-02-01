@@ -13,7 +13,7 @@ export default function Home() {
 
       <div className="relative overflow-hidden py-24 lg:py-32">
         {/* Background Photo */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 -z-10">
           <Image
            src="https://lh4.googleusercontent.com/ITiXsBe5Gp4PIQUuPojXDvu429IbnLZbO0bqvzKXVlFeBC-AOHTdnB2CLq6bfD5YLVaFJO7UyPGqQ0EUlEGmSXA=w16383"
             alt="Background"

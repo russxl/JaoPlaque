@@ -1,87 +1,164 @@
 import Image from 'next/image';
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import Navbar from "../component/nav";
 import Footer from "../component/footer";
+import Banner from "../component/banner";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white">
       <Navbar />
       
       <main className="flex-1">
-        {/* Hero Banner */}
-        <section className="relative h-[400px] mb-16">
-          <Image
-            src="/about-hero.jpg"
-            alt="About Us"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center gap-4">
-            <h1 className="text-5xl font-bold text-white">About Us</h1>
-            <Button variant="secondary">Learn More</Button>
+        <Banner 
+          title="About JAO Plaques" 
+          subtitle="Crafting Excellence in Recognition Awards Since 1995" 
+        />
+
+        {/* Mission and Values */}
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="space-y-6">
+                <h2 className="text-3xl font-bold text-gray-900">Our Mission</h2>
+                <p className="text-lg text-gray-600">
+                  At JAO Plaques, we are dedicated to creating exceptional recognition awards that celebrate 
+                  achievements and milestones. Our commitment to quality craftsmanship and innovative design 
+                  has made us a trusted partner for organizations worldwide.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+                  <div className="bg-gray-50 p-6 rounded-lg">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Quality</h3>
+                    <p className="text-gray-600">Premium materials and meticulous attention to detail in every piece</p>
+                  </div>
+                  <div className="bg-gray-50 p-6 rounded-lg">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Innovation</h3>
+                    <p className="text-gray-600">Cutting-edge design and manufacturing techniques</p>
+                  </div>
+                </div>
+              </div>
+              <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl">
+                <Image
+                  src="/about/workshop.jpg"
+                  alt="Our Workshop"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Image Section */}
-        <section className="container py-16 mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="overflow-hidden">
-              <Image
-                src="/about-image1.jpg"
-                alt="Our Office"
-                width={600}
-                height={400}
-                className="object-cover w-full h-full"
-              />
-            </Card>
-            <Card className="overflow-hidden">
-              <Image
-                src="/about-image2.jpg"
-                alt="Our Team"
-                width={600}
-                height={400}
-                className="object-cover w-full h-full"
-              />
-            </Card>
+        {/* Our Process */}
+        <section className="py-16 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Our Process</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                {
+                  title: "Design",
+                  description: "Collaborate with our expert designers to create your perfect award",
+                  icon: "✏️",
+                },
+                {
+                  title: "Craft",
+                  description: "Skilled artisans bring your vision to life with precision",
+                  icon: "🛠️",
+                },
+                {
+                  title: "Deliver",
+                  description: "Carefully packaged and delivered to exceed expectations",
+                  icon: "📦",
+                },
+              ].map((step, index) => (
+                <div key={index} className="bg-white p-8 rounded-lg shadow-md text-center">
+                  <div className="text-4xl mb-4">{step.icon}</div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{step.title}</h3>
+                  <p className="text-gray-600">{step.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* Company Description */}
-        <section className="container max-w-2xl mx-auto text-center px-4 pb-16">
-          <h2 className="text-3xl font-bold mb-6">Our Story</h2>
-          <Separator className="mb-6" />
-          <p className="text-lg text-muted-foreground">
-            We are a dedicated team of professionals committed to delivering 
-            exceptional services and products. With years of experience and 
-            a passion for innovation, we strive to exceed our clients&apos; 
-            expectations in every project we undertake.
-          </p>
+        {/* Team */}
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Our Team</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                {
+                  name: "John Anderson",
+                  role: "Master Craftsman",
+                  image: "/about/team1.jpg",
+                },
+                {
+                  name: "Sarah Chen",
+                  role: "Lead Designer",
+                  image: "/about/team2.jpg",
+                },
+                {
+                  name: "Michael Rodriguez",
+                  role: "Production Manager",
+                  image: "/about/team3.jpg",
+                },
+                {
+                  name: "Emily Taylor",
+                  role: "Client Relations",
+                  image: "/about/team4.jpg",
+                },
+              ].map((member, index) => (
+                <div key={index} className="text-center">
+                  <div className="relative w-48 h-48 mx-auto mb-4 rounded-full overflow-hidden">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900">{member.name}</h3>
+                  <p className="text-gray-600">{member.role}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
 
-        {/* Partners & Clients */}
-        <section className="bg-muted py-16">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">Our Partners & Clients</h2>
-            <Separator className="mb-12" />
+        {/* Certifications and Awards */}
+        <section className="py-16 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-12">Our Certifications</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[1, 2, 3, 4].map((i) => (
-                <Card key={i} className="p-4">
-                  <div className="flex items-center justify-center">
+                <div key={i} className="bg-white p-6 rounded-lg shadow-md">
+                  <div className="relative h-20">
                     <Image
-                      src={`/partner${i}.png`}
-                      alt={`Partner ${i}`}
-                      width={200}
-                      height={100}
+                      src={`/about/cert${i}.png`}
+                      alt={`Certification ${i}`}
+                      fill
                       className="object-contain"
                     />
                   </div>
-                </Card>
+                </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Contact CTA */}
+        <section className="py-16 bg-gray-900 text-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl font-bold mb-4">Ready to Create Your Custom Award?</h2>
+            <p className="text-lg text-gray-300 mb-8">
+              Let&apos;s work together to design the perfect recognition piece for your achievement.
+            </p>
+            <a
+              href="/contact"
+              className="inline-block bg-white text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+            >
+              Contact Us Today
+            </a>
           </div>
         </section>
       </main>

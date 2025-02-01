@@ -21,8 +21,8 @@ export default function Contact() {
       <Navbar/>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
+        <div className="text-center mb-12 ">
+          <h1 className="text-4xl font-bold mb-4 mt-20">Contact Us</h1>
           <p className="text-muted-foreground">Get in touch with us</p>
         </div>
 
