@@ -4,6 +4,7 @@ import Footer from "@/app/component/footer";
 import ImageHolder from "@/app/component/image-holder";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { Metadata } from 'next';
 
 const plaqueData = {
   acrylic: {
@@ -122,7 +123,33 @@ const plaqueData = {
   },
 };
 
-export default function PlaquePage({ params }: { params: { type: string } }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: { type: string };
+}): Promise<Metadata> {
+  const type = params.type.toLowerCase();
+  const data = plaqueData[type as keyof typeof plaqueData];
+
+  if (!data) {
+    return {
+      title: 'Not Found',
+      description: 'The requested plaque type was not found',
+    };
+  }
+
+  return {
+    title: data.title,
+    description: data.description,
+  };
+}
+
+type Props = {
+  params: { type: string };
+  searchParams: Record<string, string | string[] | undefined>;
+};
+
+export default async function PlaquePage({ params }: Props) {
   const type = params.type.toLowerCase();
   const data = plaqueData[type as keyof typeof plaqueData];
 
